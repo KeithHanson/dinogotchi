@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs6o73w62182h"]
+
+[ext_resource type="PackedScene" uid="uid://cqwlm5dekudtm" path="res://addons/proton_scatter/demos/assets/models/bush.glb" id="1_6jirj"]
+[ext_resource type="Material" uid="uid://oh5pwrw261m5" path="res://Materials/oak_tree_leaves.tres" id="2_deslv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7o1e"]
+
+[node name="bush" instance=ExtResource("1_6jirj")]
+
+[node name="Bush" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6222, 0)
+surface_material_override/0 = ExtResource("2_deslv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_d7o1e")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cskshklvxqq85"]
+
+[ext_resource type="PackedScene" uid="uid://bka8o16ax06d5" path="res://Assets/Trees/OakTree1.fbx" id="1_7ghyq"]
+[ext_resource type="Material" uid="uid://oh5pwrw261m5" path="res://Materials/oak_tree_leaves.tres" id="2_747jq"]
+[ext_resource type="Material" uid="uid://r1p5ybc1g7sb" path="res://Materials/oak_tree_trunk.tres" id="3_5b5c2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0a1o"]
+size = Vector3(1.89869, 9.68485, 1.49281)
+
+[node name="OakTree1" instance=ExtResource("1_7ghyq")]
+
+[node name="OakTree1" parent="RootNode" index="0"]
+transform = Transform3D(54.0194, 0, 0, 0, -6.43962e-06, 54.0194, 0, -54.0194, -6.43962e-06, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_747jq")
+surface_material_override/1 = ExtResource("3_5b5c2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.182863, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.568089, 4.194, 0)
+shape = SubResource("BoxShape3D_l0a1o")

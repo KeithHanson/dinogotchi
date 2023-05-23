@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8d8lr4t57s3n"]
+
+[ext_resource type="PackedScene" uid="uid://dvikf4p6h2kct" path="res://Assets/Triceratops.glb" id="1_dgfrw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yeui"]
+albedo_color = Color(0.654902, 0, 0.654902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uaxg3"]
+albedo_color = Color(0.976471, 0.454902, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srism"]
+albedo_color = Color(0.682353, 0.196078, 0.52549, 1)
+
+[node name="Triceratops" instance=ExtResource("1_dgfrw")]
+
+[node name="Skeleton3D" parent="RootNode/Armature" index="0"]
+bones/1/position = Vector3(0.00180254, 0.0438182, -0.00215838)
+bones/1/rotation = Quaternion(0, -0.0373742, 0, 0.999301)
+bones/2/position = Vector3(-0.00277596, -0.0141354, -0.0138719)
+bones/2/rotation = Quaternion(0.215243, -0.215243, 0.673551, 0.673551)
+bones/3/rotation = Quaternion(-0.698752, 0.715266, 0.0101932, -0.00609746)
+bones/4/rotation = Quaternion(0.00248394, 0.00315826, 0.049955, 0.998743)
+bones/6/position = Vector3(0.00215963, -0.0141354, -0.0138719)
+bones/6/rotation = Quaternion(0.690687, 0.690688, -0.151495, 0.151495)
+bones/7/rotation = Quaternion(-0.00369442, -0.011936, 0.766099, 0.642601)
+bones/8/rotation = Quaternion(0.299747, -0.00852902, -0.0496947, 0.952685)
+bones/10/position = Vector3(-0.000322827, -0.0120386, -0.00830826)
+bones/11/rotation = Quaternion(-0.16311, -7.05237e-07, -1.14564e-07, 0.986608)
+bones/12/rotation = Quaternion(-0.243757, 1.14913e-07, -2.86261e-08, 0.969836)
+bones/13/rotation = Quaternion(0.060471, -1.22151e-07, 1.29679e-08, 0.99817)
+bones/14/rotation = Quaternion(0.166821, 1.20111e-07, 1.65794e-10, 0.985987)
+bones/15/rotation = Quaternion(0.155599, -1.10166e-09, 3.89699e-08, 0.98782)
+bones/18/rotation = Quaternion(-0.25866, 6.33582e-05, -0.0445017, 0.964943)
+bones/19/rotation = Quaternion(0.0604525, -0.0160333, 0.0379462, 0.997321)
+bones/20/position = Vector3(0.000165009, 0.012868, 0.00133725)
+bones/20/rotation = Quaternion(0.086283, -0.00291104, -0.0224194, 0.996014)
+bones/21/rotation = Quaternion(-0.0624827, -0.258713, 0.0151936, 0.963812)
+bones/23/position = Vector3(-0.00221284, -0.0207272, 0.0154533)
+bones/23/rotation = Quaternion(0.101209, -0.101205, 0.699829, 0.699825)
+bones/24/rotation = Quaternion(0.697972, -0.653724, -0.205964, 0.207505)
+bones/25/rotation = Quaternion(-0.00216325, 0.00272021, 0.000354928, 0.999994)
+bones/27/position = Vector3(0.00159652, -0.0207272, 0.0154533)
+bones/27/rotation = Quaternion(0.701241, 0.701237, 0.0909064, -0.0909108)
+bones/28/rotation = Quaternion(0.0404734, 0.0420194, 0.745251, 0.664227)
+bones/29/rotation = Quaternion(-0.201749, 0.00345843, -0.0403754, 0.978599)
+bones/31/position = Vector3(-0.0103351, 0.000861704, -0.0366578)
+bones/31/rotation = Quaternion(0.707107, -1.29531e-06, -1.29531e-06, 0.707107)
+bones/33/position = Vector3(0.0103351, 0.000861704, -0.0106725)
+bones/35/position = Vector3(-0.00797666, 0.000861704, 0.0197162)
+bones/37/position = Vector3(0.00797667, 0.000861704, 0.00895383)
+bones/37/rotation = Quaternion(0.707107, -1.96966e-06, -1.96966e-06, 0.707107)
+
+[node name="Triceratops" parent="RootNode/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_3yeui")
+surface_material_override/1 = SubResource("StandardMaterial3D_uaxg3")
+surface_material_override/2 = SubResource("StandardMaterial3D_srism")

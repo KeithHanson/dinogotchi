@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://3yxevpr82ww2"]
+
+[ext_resource type="Script" path="res://Scripts/EnvironmentSpawner.gd" id="1_tr2jf"]
+[ext_resource type="PackedScene" uid="uid://bdg8tlcqj37gy" path="res://Scenes/Environment/oak_tree_1.tscn" id="2_3cshg"]
+[ext_resource type="PackedScene" uid="uid://cyt2nxg6wlm0c" path="res://Scenes/Environment/oak_tree_2.tscn" id="3_spvdw"]
+
+[node name="EnvironmentSpawner" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+script = ExtResource("1_tr2jf")
+maxDuplicates = 20
+modelsToDuplicate = Array[PackedScene]([ExtResource("2_3cshg"), ExtResource("3_spvdw")])

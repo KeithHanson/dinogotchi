@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdmo4nxhscw0w"]
+
+[ext_resource type="PackedScene" uid="uid://dina4s5q3ihps" path="res://Assets/Rocks/Rock_25.fbx" id="1_dem8d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4w3gh"]
+albedo_color = Color(0.699219, 0.497162, 0.390579, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wm07p"]
+size = Vector3(6.664, 7.22569, 7.26204)
+
+[node name="Rock_25" instance=ExtResource("1_dem8d")]
+
+[node name="RootNode" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Rock_25" parent="RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 1, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_4w3gh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170872, 2.09387, 0)
+shape = SubResource("BoxShape3D_wm07p")
