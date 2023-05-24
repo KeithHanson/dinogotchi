@@ -8,7 +8,8 @@ size = Vector3(6.65967, 6.73853, 16.9315)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_ikrfi")
-speed = 50
+speed = 20
+sprint_multiplier = 3
 
 [node name="Triceratops" parent="." instance=ExtResource("1_30sfx")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
