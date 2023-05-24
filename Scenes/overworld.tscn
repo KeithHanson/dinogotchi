@@ -19,7 +19,7 @@ albedo_color = Color(0, 0.2, 0, 1)
 [node name="Overworld" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("1_xomt2")
-maxDuplicates = Array[int]([25, 25, 100])
+maxDuplicates = Array[int]([0, 0, 100])
 modelsToDuplicate = Array[PackedScene]([ExtResource("7_7tb8n"), ExtResource("3_oinr5"), ExtResource("4_t430v")])
 minMoveDistance = -50
 maxMoveDistance = 50
@@ -42,8 +42,18 @@ mesh = SubResource("PlaneMesh_5bwgd")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_nppm8")
 
-[node name="Player" parent="." instance=ExtResource("6_ingwp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.4742, -29.032)
+[node name="Player" parent="." node_paths=PackedStringArray("growthValueLabel", "growthMaxLabel", "hpValueLabel", "hpMaxLabel", "staminaValueLabel", "staminaMaxLabel", "thirstValueLabel", "thirstMaxLabel", "hungerValueLabel", "hungerMaxLabel") instance=ExtResource("6_ingwp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78268, -0.294622)
+growthValueLabel = NodePath("../UI/DebugUI/GrowthContainer/GrowthValue")
+growthMaxLabel = NodePath("../UI/DebugUI/GrowthContainer/GrowthMax")
+hpValueLabel = NodePath("../UI/DebugUI/HPContainer/HPValue")
+hpMaxLabel = NodePath("../UI/DebugUI/HPContainer/HPMax")
+staminaValueLabel = NodePath("../UI/DebugUI/StaminaContainer/StaminaValue")
+staminaMaxLabel = NodePath("../UI/DebugUI/StaminaContainer/StaminaMax")
+thirstValueLabel = NodePath("../UI/DebugUI/ThirstContainer/ThirstValue")
+thirstMaxLabel = NodePath("../UI/DebugUI/ThirstContainer/ThirstMax")
+hungerValueLabel = NodePath("../UI/DebugUI/HungerContainer/HungerValue")
+hungerMaxLabel = NodePath("../UI/DebugUI/HungerContainer/HungerMax")
 
 [node name="Marker3D" type="Marker3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.2197)
@@ -52,3 +62,117 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.2197)
 script = ExtResource("6_k323a")
 target_path = NodePath("../Player/Marker3D")
 offset = Vector3(0, 20, 40)
+
+[node name="TickTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="UI" type="Node" parent="."]
+
+[node name="DebugUI" type="VBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(400, 0)
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 410.0
+offset_bottom = 96.0
+
+[node name="GrowthContainer" type="HBoxContainer" parent="UI/DebugUI"]
+layout_mode = 2
+
+[node name="LabelGrowth" type="Label" parent="UI/DebugUI/GrowthContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Growth: "
+
+[node name="GrowthValue" type="Label" parent="UI/DebugUI/GrowthContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Separator" type="Label" parent="UI/DebugUI/GrowthContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="GrowthMax" type="Label" parent="UI/DebugUI/GrowthContainer"]
+layout_mode = 2
+text = "100.00"
+
+[node name="HPContainer" type="HBoxContainer" parent="UI/DebugUI"]
+layout_mode = 2
+
+[node name="LabelHP" type="Label" parent="UI/DebugUI/HPContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "HP: "
+
+[node name="HPValue" type="Label" parent="UI/DebugUI/HPContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Separator" type="Label" parent="UI/DebugUI/HPContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="HPMax" type="Label" parent="UI/DebugUI/HPContainer"]
+layout_mode = 2
+text = "100.00"
+
+[node name="StaminaContainer" type="HBoxContainer" parent="UI/DebugUI"]
+layout_mode = 2
+
+[node name="LabelStamina" type="Label" parent="UI/DebugUI/StaminaContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Stamina: "
+
+[node name="StaminaValue" type="Label" parent="UI/DebugUI/StaminaContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Separator" type="Label" parent="UI/DebugUI/StaminaContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="StaminaMax" type="Label" parent="UI/DebugUI/StaminaContainer"]
+layout_mode = 2
+text = "100.00"
+
+[node name="HungerContainer" type="HBoxContainer" parent="UI/DebugUI"]
+layout_mode = 2
+
+[node name="LabelHunger" type="Label" parent="UI/DebugUI/HungerContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Hunger: "
+
+[node name="HungerValue" type="Label" parent="UI/DebugUI/HungerContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Separator" type="Label" parent="UI/DebugUI/HungerContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="HungerMax" type="Label" parent="UI/DebugUI/HungerContainer"]
+layout_mode = 2
+text = "100.00"
+
+[node name="ThirstContainer" type="HBoxContainer" parent="UI/DebugUI"]
+layout_mode = 2
+
+[node name="LabelThirst" type="Label" parent="UI/DebugUI/ThirstContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Thirst: "
+
+[node name="ThirstValue" type="Label" parent="UI/DebugUI/ThirstContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Separator" type="Label" parent="UI/DebugUI/ThirstContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="ThirstMax" type="Label" parent="UI/DebugUI/ThirstContainer"]
+layout_mode = 2
+text = "100.00"
+
+[connection signal="timeout" from="TickTimer" to="Player" method="_on_tick_timer_timeout"]
