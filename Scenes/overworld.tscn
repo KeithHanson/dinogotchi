@@ -44,6 +44,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_nppm8")
 
 [node name="Player" parent="." node_paths=PackedStringArray("growthValueLabel", "growthMaxLabel", "hpValueLabel", "hpMaxLabel", "staminaValueLabel", "staminaMaxLabel", "thirstValueLabel", "thirstMaxLabel", "hungerValueLabel", "hungerMaxLabel") instance=ExtResource("6_ingwp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78268, -0.294622)
+collision_layer = 3
+growth = 1
+growthRate = 0.1
+hungerRate = 2.0
+thirstRate = 2.0
 growthValueLabel = NodePath("../UI/DebugUI/GrowthContainer/GrowthValue")
 growthMaxLabel = NodePath("../UI/DebugUI/GrowthContainer/GrowthMax")
 hpValueLabel = NodePath("../UI/DebugUI/HPContainer/HPValue")

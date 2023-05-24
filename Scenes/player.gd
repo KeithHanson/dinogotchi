@@ -13,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 #Stats
 @export var growth = 10
 @export var maxGrowth = 100
-@export var growthRate = 1
+@export var growthRate = 1.0
 
 @export var maxHP = 100
 @export var currentHP = 100
@@ -97,10 +97,27 @@ func update_all_ui():
 	self.hungerValueLabel.text = str(self.currentHunger).pad_decimals(2)
 	self.thirstValueLabel.text = str(self.currentThirst).pad_decimals(2)
 
+func is_healthy():
+	return self.currentHunger <= self.maxHunger * 0.5 and self.currentThirst <= self.maxThirst * 0.5
+	
+func is_starving():
+	return self.currentHunger == self.maxHunger or self.currentThirst == self.maxThirst
+
 func adjust_all_player_properties_on_tick():
-	self.growth += self.growthRate
+	if is_healthy():
+		self.growth += self.growthRate
+	
+	if self.growth >= self.maxGrowth:
+		self.growth = self.maxGrowth
+	
+	
 	self.currentHunger += self.hungerRate
+	if self.currentHunger > self.maxHunger:
+		self.currentHunger = self.maxHunger
+		
 	self.currentThirst += self.thirstRate
+	if self.currentThirst > self.maxThirst:
+		self.currentThirst = self.maxThirst
 	
 	self.currentHP += self.healingRate
 	
@@ -112,9 +129,20 @@ func adjust_all_player_properties_on_tick():
 		
 		if self.currentStamina > self.maxStamina:
 			self.currentStamina = self.maxStamina
+	
+	if is_starving():
+		self.currentHP -= 5
+		
+	if self.currentHP < 0:
+		self.currentHP = 0
 
 func apply_all_player_properties_on_tick():
-	var _scale_to_apply = self.growth / float(self.maxGrowth)
+	if self.growth == self.maxGrowth:
+		pass
+		
+	var scale_to_apply = self.growth / float(self.maxGrowth)
+	
+	self.scale = Vector3(scale_to_apply, scale_to_apply, scale_to_apply)
 	
 
 func _on_tick_timer_timeout():
@@ -122,3 +150,11 @@ func _on_tick_timer_timeout():
 	self.apply_all_player_properties_on_tick()
 	
 	self.update_all_ui()
+
+
+func _on_eat_area_3d_area_entered(area:Area3D):
+	print(area)
+
+
+func _on_eat_area_3d_body_entered(body):
+	print(body)

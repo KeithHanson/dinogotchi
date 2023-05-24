@@ -7,11 +7,13 @@
 size = Vector3(6.65967, 6.73853, 16.9315)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4eu15"]
+radius = 6.734
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_ikrfi")
 speed = 20
 sprint_multiplier = 3
+growth = 100
 
 [node name="Triceratops" parent="." instance=ExtResource("1_30sfx")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -20,5 +22,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24217, 3.2428, -2.36483)
 shape = SubResource("BoxShape3D_4av4c")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="EatArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.81927, -8.02137)
+collision_layer = 0
+collision_mask = 2
+priority = 1.0
+
+[node name="EatCollisionShape" type="CollisionShape3D" parent="EatArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.27311)
 shape = SubResource("SphereShape3D_4eu15")
+
+[connection signal="area_entered" from="EatArea3D" to="." method="_on_eat_area_3d_area_entered"]
+[connection signal="body_entered" from="EatArea3D" to="." method="_on_eat_area_3d_body_entered"]
