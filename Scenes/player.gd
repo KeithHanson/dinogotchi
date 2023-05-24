@@ -114,7 +114,7 @@ func adjust_all_player_properties_on_tick():
 			self.currentStamina = self.maxStamina
 
 func apply_all_player_properties_on_tick():
-	var _scale_to_apply = self.growth / self.maxGrowth
+	var _scale_to_apply = self.growth / float(self.maxGrowth)
 	
 
 func _on_tick_timer_timeout():
